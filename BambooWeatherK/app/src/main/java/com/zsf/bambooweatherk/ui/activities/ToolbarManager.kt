@@ -36,18 +36,16 @@ interface ToolbarManager {
         }
     }
 
-    fun enableHomeAsUp(up:() -> Unit){
+    fun enableHomeAsUp(up: () -> Unit) {
         toolbar.navigationIcon = createUpDrawable()
         toolbar.setNavigationOnClickListener { up() }
     }
 
-    private fun createUpDrawable() = with(DrawerArrowDrawable(toolbar.ctx)){
-        progress = 1f
-        this
-    }
+    private fun createUpDrawable() = DrawerArrowDrawable(toolbar.ctx).apply { progress = 1f }
 
-    fun attachToScroll(recyclerView:RecyclerView){
-        recyclerView.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+
+    fun attachToScroll(recyclerView: RecyclerView) {
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (dy > 0) toolbar.slideExit() else toolbar.slideEnter()
             }
