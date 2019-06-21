@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">BambooWeatherK</string>
     <string name="settings">设置</string>
+    <string name="city_zipcode">City ZipCode</string>
 </resources>
